@@ -5,8 +5,8 @@ authors:
 date: '2026-03-01'
 publication_types:
 - article
-status: accepted
-status_label: Accepted
+status: forthcoming
+status_label: Forthcoming
 reading_time: false
 show_date_updated: false
 publication: Journal of Experimental Political Science
