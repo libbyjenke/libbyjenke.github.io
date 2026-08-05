@@ -40,7 +40,7 @@ params:
       logo:
         text: "Libby Jenke"
   footer:
-    text: "Libby Jenke · Associate Professor of Political Science, University of Houston"
+    text: "Libby Jenke · Quantitative UX Researcher at Meta"
   mysite:
     credit: true
     discovery: true
