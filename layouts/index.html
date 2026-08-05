@@ -1,0 +1,87 @@
+{{ define "main" }}
+
+{{ $author := site.GetPage "/authors/admin" }}
+{{ $avatar := ($author.Resources.ByType "image").GetMatch "*avatar*" }}
+
+<div class="mx-auto max-w-5xl px-6 pt-6 pb-16">
+
+  {{/* HERO: photo left, text right on desktop; stacked on mobile */}}
+  <div class="flex flex-col md:flex-row md:items-start gap-8 md:gap-12">
+    {{ if $avatar }}
+    {{ $img := $avatar.Fill "400x400 Center" }}
+    <div class="flex-shrink-0 flex justify-center md:justify-start">
+      <img src="{{ $img.RelPermalink }}" width="200" height="200" alt="Libby Jenke"
+           class="rounded-full object-cover border-4 border-white dark:border-neutral-800 shadow-md"
+           style="width:200px; height:200px;" loading="eager" fetchpriority="high">
+    </div>
+    {{ end }}
+
+    <div class="flex-1 text-center md:text-left">
+      <h1 class="text-4xl font-bold tracking-tight text-neutral-900 dark:text-white">Libby Jenke</h1>
+      <p class="mt-1 text-lg font-semibold text-neutral-600 dark:text-neutral-300">Assistant Professor of Political Science, University of Houston</p>
+
+      <p class="mt-4 max-w-2xl text-neutral-700 dark:text-neutral-300 mx-auto md:mx-0">
+        Libby Jenke is a quantitative methodologist specializing in causal inference and experimental methods. She uses eye tracking to obtain direct measures of decision processes, information accrual, and attention, and studies questions of voter behavior with an emphasis on affective polarization. She is currently a Visiting Professor at Harvard University and will be a Visiting Research Fellow at the University of Pennsylvania in 2025–2026.
+      </p>
+
+      <div class="mt-6 flex flex-wrap justify-center md:justify-start gap-3">
+        <a href="/files/jenke_cv2025.pdf" target="_blank" rel="noopener"
+           class="inline-flex items-center px-4 py-2 text-sm font-medium rounded-lg bg-neutral-800 text-white hover:bg-neutral-700 transition-colors dark:bg-neutral-100 dark:text-neutral-900 dark:hover:bg-white">
+          Curriculum Vitae
+        </a>
+        <a href="/publication/"
+           class="inline-flex items-center px-4 py-2 text-sm font-medium rounded-lg border border-neutral-300 text-neutral-800 hover:bg-neutral-100 transition-colors dark:border-neutral-600 dark:text-neutral-100 dark:hover:bg-neutral-800">
+          Publications
+        </a>
+        <a href="/contact/"
+           class="inline-flex items-center px-4 py-2 text-sm font-medium rounded-lg border border-neutral-300 text-neutral-800 hover:bg-neutral-100 transition-colors dark:border-neutral-600 dark:text-neutral-100 dark:hover:bg-neutral-800">
+          Contact
+        </a>
+      </div>
+
+      <ul class="mt-5 flex flex-wrap justify-center md:justify-start gap-4 text-sm">
+        <li><a class="hover:underline" href="mailto:ljenke@uh.edu">Email</a></li>
+        <li><a class="hover:underline" href="https://github.com/libbyjenke" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a class="hover:underline" href="https://scholar.google.com/citations?user=uecSN6QAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener">Google Scholar</a></li>
+      </ul>
+    </div>
+  </div>
+
+  {{/* RESEARCH AREAS: expandable accordion */}}
+  <section id="research-areas" style="scroll-margin-top: 6rem;" class="mt-16">
+    <h2 class="text-2xl font-bold text-neutral-900 dark:text-white mb-4">Research Areas</h2>
+
+    <div class="divide-y divide-neutral-200 dark:divide-neutral-700 border-t border-b border-neutral-200 dark:border-neutral-700">
+      {{ range site.Data.research_areas }}
+      <details class="group py-4">
+        <summary class="flex items-center justify-between cursor-pointer list-none font-semibold text-neutral-800 dark:text-neutral-100">
+          <span>{{ .name }}</span>
+          <span class="ml-4 transition-transform group-open:rotate-45 text-neutral-400">+</span>
+        </summary>
+        <p class="mt-2 text-neutral-600 dark:text-neutral-300">{{ .description }}</p>
+      </details>
+      {{ end }}
+    </div>
+  </section>
+
+  {{/* RECENT PUBLICATIONS TEASER */}}
+  {{ $recent := where site.RegularPages "Section" "publication" }}
+  {{ $recent = $recent.ByDate.Reverse | first 3 }}
+  {{ if $recent }}
+  <section class="mt-16">
+    <h2 class="text-2xl font-bold text-neutral-900 dark:text-white mb-4">Recent Writings</h2>
+    <ul class="space-y-3">
+      {{ range $recent }}
+      <li class="text-neutral-700 dark:text-neutral-300">
+        <a href="{{ .RelPermalink }}" class="font-medium underline hover:no-underline">{{ .Title }}</a>
+        {{ with .Params.publication }}<span class="text-neutral-500 dark:text-neutral-400"> — {{ . | markdownify }}</span>{{ end }}
+      </li>
+      {{ end }}
+    </ul>
+    <a href="/publication/" class="inline-block mt-4 text-sm font-medium underline hover:no-underline">View all publications &rarr;</a>
+  </section>
+  {{ end }}
+
+</div>
+
+{{ end }}

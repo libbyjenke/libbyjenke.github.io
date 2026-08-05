@@ -1,0 +1,10 @@
+- name: Affective Polarization
+  description: How partisans' feelings toward their own party and the opposing party diverge, what drives that gap, and its consequences for democratic norms and misinformation belief.
+- name: Voter Behavior
+  description: How citizens form political preferences and make voting decisions, including the interplay between policy positions and partisan identity.
+- name: Eye Tracking Methodology
+  description: Using eye tracking to obtain direct measures of decision processes, information acquisition, and attention during political choice.
+- name: Causal Inference
+  description: Methods for credible causal identification in observational and experimental political science research, including indirect manipulations and excludability.
+- name: Conjoint and Survey Experiments
+  description: Design and analysis of conjoint experiments, including attention, measurement error, and heterogeneous treatment effects.

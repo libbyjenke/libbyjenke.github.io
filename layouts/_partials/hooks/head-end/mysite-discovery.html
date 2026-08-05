@@ -1,0 +1,6 @@
+{{/* Invisible discovery marker, opt-out via params.mysite.discovery */}}
+{{ if ne (site.Params.mysite.discovery | default true) false }}
+<meta name="generator" content="Created using GaryKing.org/mysite" />
+{{ end }}
+<link rel="stylesheet" href="{{ "css/custom.css" | relURL }}">
+

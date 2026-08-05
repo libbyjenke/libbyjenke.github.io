@@ -1,0 +1,100 @@
+{{ define "main" }}
+
+{{ $pages := .Pages.ByDate.Reverse }}
+
+{{/* Tab order and labels */}}
+{{ $tabs := slice
+  (dict "key" "published" "label" "Articles")
+  (dict "key" "forthcoming" "label" "Forthcoming")
+  (dict "key" "conditionally-accepted" "label" "Conditionally Accepted")
+  (dict "key" "book" "label" "Books")
+  (dict "key" "under-review" "label" "Under Review")
+  (dict "key" "working-paper" "label" "Working Papers")
+}}
+
+<div class="mx-auto max-w-4xl px-6 py-8">
+  <h1 class="text-3xl font-bold text-neutral-900 dark:text-white mb-2">Publications</h1>
+  <p class="text-neutral-600 dark:text-neutral-300 mb-6">{{ len $pages }} items.</p>
+
+  {{/* Sticky tab strip */}}
+  <div class="sticky top-[var(--navbar-height,64px)] z-10 bg-white/90 dark:bg-neutral-900/90 backdrop-blur border-b border-neutral-200 dark:border-neutral-700 mb-6">
+    <div class="flex flex-wrap gap-2 py-3" role="tablist">
+      <button type="button" class="tab-btn px-3 py-1.5 text-sm font-medium rounded-full border border-neutral-300 dark:border-neutral-600 bg-neutral-800 text-white dark:bg-neutral-100 dark:text-neutral-900" data-tab="all" aria-selected="true">
+        All
+      </button>
+      {{ range $tabs }}
+      <button type="button" class="tab-btn px-3 py-1.5 text-sm font-medium rounded-full border border-neutral-300 dark:border-neutral-600 text-neutral-700 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800" data-tab="{{ .key }}" aria-selected="false">
+        {{ .label }}
+      </button>
+      {{ end }}
+    </div>
+  </div>
+
+  {{/* Dense citation list — server-rendered, JS-enhanced filtering */}}
+  <ul id="pub-list" class="space-y-5">
+    {{ range $pages }}
+    <li class="pub-item pb-5 border-b border-neutral-100 dark:border-neutral-800" data-tab="{{ .Params.status }}">
+      <div class="text-xs font-semibold uppercase tracking-wide text-neutral-400 dark:text-neutral-500 mb-1">
+        {{ .Params.status_label | default "Article" }}
+      </div>
+      <div class="text-neutral-800 dark:text-neutral-100">
+        {{ partial "page_metadata_authors" . }}
+        {{ if .Date }}({{ .Date.Format "2006" }}).{{ end }}
+        <a href="{{ .RelPermalink }}" class="font-medium underline hover:no-underline">{{ .Title }}</a>.
+        {{ with .Params.publication }}<span class="italic">{{ . | markdownify }}</span>.{{ end }}
+      </div>
+      <div class="mt-1.5 flex flex-wrap gap-x-3 gap-y-1">
+        {{ partial "page_links" (dict "page" . "is_list" 1) }}
+      </div>
+    </li>
+    {{ end }}
+  </ul>
+
+  <p id="pub-empty" class="hidden text-neutral-500 dark:text-neutral-400 py-8 text-center">No items in this category.</p>
+</div>
+
+<script>
+(function () {
+  var buttons = document.querySelectorAll('.tab-btn');
+  var items = document.querySelectorAll('.pub-item');
+  var empty = document.getElementById('pub-empty');
+
+  function activate(tab) {
+    var visible = 0;
+    items.forEach(function (item) {
+      var show = tab === 'all' || item.getAttribute('data-tab') === tab;
+      item.style.display = show ? '' : 'none';
+      if (show) visible++;
+    });
+    empty.classList.toggle('hidden', visible !== 0);
+
+    buttons.forEach(function (btn) {
+      var active = btn.getAttribute('data-tab') === tab;
+      btn.setAttribute('aria-selected', active ? 'true' : 'false');
+      btn.classList.toggle('bg-neutral-800', active);
+      btn.classList.toggle('text-white', active);
+      btn.classList.toggle('dark:bg-neutral-100', active);
+      btn.classList.toggle('dark:text-neutral-900', active);
+      btn.classList.toggle('text-neutral-700', !active);
+      btn.classList.toggle('dark:text-neutral-200', !active);
+    });
+
+    if (history.replaceState) {
+      var hash = tab === 'all' ? '' : ('#' + tab);
+      history.replaceState(null, '', window.location.pathname + hash);
+    }
+  }
+
+  buttons.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      activate(btn.getAttribute('data-tab'));
+    });
+  });
+
+  var initial = window.location.hash ? window.location.hash.slice(1) : 'all';
+  var match = document.querySelector('.tab-btn[data-tab="' + initial + '"]');
+  activate(match ? initial : 'all');
+})();
+</script>
+
+{{ end }}

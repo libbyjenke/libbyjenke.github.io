@@ -1,0 +1,16 @@
+{{ define "main" }}
+<div class="mx-auto max-w-4xl px-6 py-8">
+  <h1 class="text-3xl font-bold text-neutral-900 dark:text-white mb-6">Tools</h1>
+  <ul class="space-y-6">
+    {{ range .Pages.ByTitle }}
+    <li class="pb-5 border-b border-neutral-100 dark:border-neutral-800">
+      <a href="{{ .RelPermalink }}" class="font-medium text-lg underline hover:no-underline">{{ .Title }}</a>
+      {{ with .Params.summary }}<p class="mt-1 text-neutral-600 dark:text-neutral-300">{{ . }}</p>{{ end }}
+      <div class="mt-1.5 flex flex-wrap gap-x-3 gap-y-1">
+        {{ partial "page_links" (dict "page" . "is_list" 1) }}
+      </div>
+    </li>
+    {{ end }}
+  </ul>
+</div>
+{{ end }}

@@ -1,0 +1,6 @@
+{{/* Footer credit line, opt-out via params.mysite.credit */}}
+{{ if ne (site.Params.mysite.credit | default true) false }}
+<p class="text-right text-xs opacity-60 mb-1">
+  Created using <a class="underline hover:opacity-100" href="https://gking.harvard.edu/mysite" target="_blank" rel="noopener">GaryKing.org/mysite</a>
+</p>
+{{ end }}

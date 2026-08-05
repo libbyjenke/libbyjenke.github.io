@@ -1,0 +1,68 @@
+/* Site-specific overrides — earth-tone accents, accessibility, dense list polish */
+
+:root {
+  --accent-clay: #b5654a;
+  --accent-clay-dark: #d98866;
+  --accent-focus: #b8860b;
+}
+
+a {
+  color: var(--accent-clay);
+}
+a:hover {
+  color: var(--accent-clay-dark);
+}
+.dark a {
+  color: var(--accent-clay-dark);
+}
+
+/* Buttons keep neutral fill; only underlined text links use the accent */
+.pub-item a,
+#pub-list a,
+.prose a {
+  text-decoration-color: color-mix(in srgb, var(--accent-clay) 50%, transparent);
+}
+
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--accent-focus);
+  outline-offset: 2px;
+}
+
+.hb-attachment-link {
+  border: 1px solid rgb(214 211 209 / 1);
+  border-radius: 0.375rem;
+  padding: 0.15rem 0.55rem;
+  font-size: 0.8rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+.dark .hb-attachment-link {
+  border-color: rgb(68 64 60 / 1);
+}
+.hb-attachment-link:hover {
+  background-color: rgb(245 245 244 / 1);
+}
+.dark .hb-attachment-link:hover {
+  background-color: rgb(41 37 36 / 1);
+}
+
+/* Research-areas accordion: override theme's generic details>summary link color */
+#research-areas summary {
+  color: rgb(38 38 38);
+}
+.dark #research-areas summary {
+  color: rgb(245 245 245);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
