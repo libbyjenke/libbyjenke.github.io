@@ -10,4 +10,7 @@ status_label: Forthcoming
 reading_time: false
 show_date_updated: false
 publication: Journal of Experimental Political Science
+links:
+- type: source
+  url: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=uecSN6QAAAAJ&sortby=pubdate&citation_for_view=uecSN6QAAAAJ:Zph67rFs4hoC
 ---
