@@ -33,6 +33,9 @@
   {{/* Dense citation list — server-rendered, JS-enhanced filtering */}}
   <ul id="pub-list" class="space-y-5">
     {{ range $pages }}
+    {{ $paperURL := "" }}
+    {{ with .Params.hugoblox }}{{ with .ids.doi }}{{ $paperURL = printf "https://doi.org/%s" . }}{{ end }}{{ end }}
+    {{ if not $paperURL }}{{ with .Params.links }}{{ with index . 0 }}{{ $paperURL = .url }}{{ end }}{{ end }}{{ end }}
     <li class="pub-item pb-5 border-b border-neutral-100 dark:border-neutral-800" data-tab="{{ .Params.status }}">
       <div class="text-xs font-semibold uppercase tracking-wide text-neutral-400 dark:text-neutral-500 mb-1">
         {{ .Params.status_label | default "Article" }}
@@ -40,11 +43,12 @@
       <div class="text-neutral-800 dark:text-neutral-100">
         {{ partial "page_metadata_authors" . }}
         {{ if .Date }}({{ .Date.Format "2006" }}).{{ end }}
-        <a href="{{ .RelPermalink }}" class="font-medium underline hover:no-underline">{{ .Title }}</a>.
+        {{ if $paperURL }}
+        <a href="{{ $paperURL | safeURL }}" target="_blank" rel="noopener" class="font-medium underline hover:no-underline">{{ .Title }}</a>.
+        {{ else }}
+        <span class="font-medium">{{ .Title }}</span>.
+        {{ end }}
         {{ with .Params.publication }}<span class="italic">{{ . | markdownify }}</span>.{{ end }}
-      </div>
-      <div class="mt-1.5 flex flex-wrap gap-x-3 gap-y-1">
-        {{ partial "page_links" (dict "page" . "is_list" 1) }}
       </div>
     </li>
     {{ end }}
