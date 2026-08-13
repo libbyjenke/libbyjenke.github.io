@@ -1,5 +1,14 @@
 baseURL: "https://libbyjenke.github.io/"
 title: "Libby Jenke"
+
+build:
+  buildStats:
+    enable: true
+  cachebusters:
+    - source: assets/hugo_stats\.json
+      target: css
+    - source: (postcss|tailwind)\.config\.js
+      target: css
 copyright: "© {year} Libby Jenke"
 languageCode: en-us
 defaultContentLanguage: en
