@@ -1,5 +1,5 @@
 ---
-title: Affective Polarization Lowers Support for Democratic Norms of Restraint
+title: 'Measurement of Affective Polarization: Two Problems and a Solution'
 authors:
 - admin
 - Diana Mutz
