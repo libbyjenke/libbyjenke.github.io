@@ -11,7 +11,7 @@ I am currently a Quantitative UX Researcher at Meta.
 
 ## Academic Positions
 
-- Associate Professor, University of Houston (2026–present)
+- Associate Professor, University of Houston (2026)
 - Visiting Scholar, University of Pennsylvania (2025–2026)
 - Visiting Assistant Professor, Harvard University (2024–2025)
 - Assistant Professor, University of Houston (2019–2026)
