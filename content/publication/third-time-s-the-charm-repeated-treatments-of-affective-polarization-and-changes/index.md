@@ -1,5 +1,5 @@
 ---
-title: 'Third Time''s the Charm?: Repeated Treatments of Affective Polarization and Changes in Democratic Norm Support'
+title: 'Beyond Single-Shot Designs: Repeated Treatments, Affective Polarization, and Democratic Norms'
 authors:
 - admin
 date: '2026-03-01'

@@ -1,5 +1,5 @@
 ---
-title: Predicting Measurement Error Bias in Conjoint Survey Experiments
+title: "Who's to Blame for Survey Instability: Respondents with Nonexistent Preferences or Researchers with Flawed Measures?"
 authors:
 - admin
 - Gary King
