@@ -39,6 +39,7 @@ I am currently a Quantitative UX Researcher at Meta.
 
 ## Professional Service
 
+- Division Chair, Experimental Research Section, American Political Science Association (2027)
 - Editorial Board Member, *Political Psychology* (2026–present)
 - Editorial Board Member, *Political Analysis* (2025–present)
 - MPSA Section Head, "Voting Behavior" (2024)
