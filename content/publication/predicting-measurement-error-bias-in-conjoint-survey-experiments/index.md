@@ -6,8 +6,8 @@ authors:
 date: '2025-06-01'
 publication_types:
 - article
-status: working-paper
-status_label: Working Paper
+status: under-review
+status_label: Under Review
 reading_time: false
 show_date_updated: false
 links:
