@@ -50,6 +50,8 @@ I am currently a Quantitative UX Researcher at Meta.
 
 Harvard University (2024, 2025) · Penn State University (2025) · University of Florida (2025) · PolMeth (2023, 2020) · Duke University, Huettel Neuroscience Lab (2023) · CIVICA Data Science Summer School (2021) · London School of Economics (2021) · Stanford University (2019, 2020)
 
+- Video: [Studying Preferences with Eye Tracking](https://www.youtube.com/watch?v=Kal55za9ocA)
+
 ## Computing Skills
 
 R, Stata, Matlab, Tobii Eye-Tracking, Psychtoolbox, Psytoolkit, MouselabWEB
