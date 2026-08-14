@@ -12,7 +12,7 @@ profiles:
   - icon: academicons/google-scholar
     url: https://scholar.google.com/citations?user=uecSN6QAAAAJ&hl=en&oi=ao
   - icon: academicons/cv
-    url: /files/jenke_cv2025.pdf
+    url: /files/jenke_cv2026.pdf
 ---
 
 I am a quantitative methodologist specializing in causal inference and experimental methods. My work uses eye tracking to obtain direct measures of decision processes, information accrual, and attention. Substantively, I study questions of voter behavior, with an emphasis on affective polarization. I am currently a Quantitative UX Researcher at Meta.

@@ -1,6 +1,6 @@
 ---
 title: Bio / C.V.
-url_pdf: /files/jenke_cv2025.pdf
+url_pdf: /files/jenke_cv2026.pdf
 ---
 
 I am a quantitative methodologist specializing in causal inference and experimental methods. My substantive work focuses on voter behavior, with an emphasis on affective polarization, and my methodological work uses eye tracking to obtain direct measures of decision processes, information accrual, and attention.
