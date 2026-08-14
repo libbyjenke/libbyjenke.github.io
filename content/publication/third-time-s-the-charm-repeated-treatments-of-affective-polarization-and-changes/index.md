@@ -5,11 +5,11 @@ authors:
 date: '2026-03-01'
 publication_types:
 - article
-status: forthcoming
-status_label: Forthcoming
+status: published
+status_label: Published
 reading_time: false
 show_date_updated: false
-publication: Journal of Experimental Political Science
+publication: 'Journal of Experimental Political Science, 1–14'
 links:
 - type: source
   url: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=uecSN6QAAAAJ&sortby=pubdate&citation_for_view=uecSN6QAAAAJ:Zph67rFs4hoC
