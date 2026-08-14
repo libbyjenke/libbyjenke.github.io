@@ -84,7 +84,7 @@
       {{ with $pub.Params.hugoblox }}{{ with .ids.doi }}{{ $paperURL = printf "https://doi.org/%s" . }}{{ end }}{{ end }}
       {{ if not $paperURL }}{{ with $pub.Params.links }}{{ with index . 0 }}{{ $paperURL = .url }}{{ end }}{{ end }}{{ end }}
       <a {{ if $paperURL }}href="{{ $paperURL | safeURL }}" target="_blank" rel="noopener"{{ end }} class="{{ if $paperURL }}group {{ end }}block{{ if not $paperURL }} cursor-default{{ end }}">
-        {{ with $pub.Params.summary }}<p class="text-sm font-medium text-[var(--accent-clay)] dark:text-[var(--accent-clay-dark)]">{{ . }}</p>{{ end }}
+        {{ with $pub.Params.summary }}<p class="text-base font-bold text-[var(--accent-clay)] dark:text-[var(--accent-clay-dark)]">{{ . }}</p>{{ end }}
         {{ with $img }}
         {{ $thumb := .Fit "700x700" }}
         <div class="mt-2 overflow-hidden rounded-lg bg-neutral-50 dark:bg-neutral-800 ring-1 ring-neutral-200 dark:ring-neutral-700">
