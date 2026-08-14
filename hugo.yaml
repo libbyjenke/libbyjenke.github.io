@@ -22,9 +22,6 @@ module:
 
 menus:
   main:
-    - name: Bio
-      pageRef: /bio
-      weight: 10
     - name: Publications
       pageRef: /publication
       weight: 20
